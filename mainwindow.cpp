@@ -36,15 +36,12 @@ void MainWindow::on_pushButtonTiefer_clicked()
 {
     aktuellesMaximum = aktuelleZahl;
     berechneSchaetzung();
-
 }
-
 
 void MainWindow::on_pushButtonHoeher_clicked()
 {
     aktuellesMinimum = aktuelleZahl;
     berechneSchaetzung();
-
 }
 
 void MainWindow::statusAktualisieren(){

@@ -36,7 +36,7 @@
          <string>Finde eine niedrigere Zahl als die aktuell geschätzte.</string>
         </property>
         <property name="text">
-         <string>Tiefer</string>
+         <string>↓ Tiefer</string>
         </property>
        </widget>
       </item>
@@ -59,7 +59,7 @@
          <string>Finde eine höhere Zahl als die aktuell geschätzte.</string>
         </property>
         <property name="text">
-         <string>Höher</string>
+         <string>Höher ↑</string>
         </property>
        </widget>
       </item>
