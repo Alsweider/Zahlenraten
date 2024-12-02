@@ -34,13 +34,13 @@ void MainWindow::berechneSchaetzung(){
 
 void MainWindow::on_pushButtonTiefer_clicked()
 {
-    aktuellesMaximum = aktuelleZahl;
+    aktuellesMaximum = aktuelleZahl - 1;
     berechneSchaetzung();
 }
 
 void MainWindow::on_pushButtonHoeher_clicked()
 {
-    aktuellesMinimum = aktuelleZahl;
+    aktuellesMinimum = aktuelleZahl + 1;
     berechneSchaetzung();
 }
 
