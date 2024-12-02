@@ -1,4 +1,4 @@
 # Zahlenraten
 Dieses Programm errät mit möglichst wenigen Versuchen eine Zahl, die sich zwischen zwei Grenzwerten befindet.
 
-![2024-11-30 18_46_35-Zahlenraten](https://github.com/user-attachments/assets/3d395f14-a045-4e85-8979-56ad4966703e)
+![2024-12-02 16_43_37-Zahlenraten](https://github.com/user-attachments/assets/f441d743-ddab-4fa0-85d8-607611ec21c6)
