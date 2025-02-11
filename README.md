@@ -1,4 +1,7 @@
 # Zahlenraten
 Dieses Programm errät mit möglichst wenigen Versuchen eine Zahl, die sich zwischen zwei Grenzwerten befindet.
 
-![2024-11-30 18_46_35-Zahlenraten](https://github.com/user-attachments/assets/3d395f14-a045-4e85-8979-56ad4966703e)
+[Neueste Version herunterladen](https://github.com/Alsweider/Zahlenraten/releases/latest)
+
+
+![2025-02-11 21_35_31-Zahlenraten](https://github.com/user-attachments/assets/53746ebb-3e7a-4fb3-8e21-b5116777d407)
