@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QClipboard>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -23,6 +24,10 @@ private slots:
     void on_pushButtonTiefer_clicked();
 
     void on_pushButtonHoeher_clicked();
+
+    void on_pushButtonKopieren_clicked();
+
+    void on_pushButtonZuruecksetzen_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -6,25 +6,38 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    aktuelleZahl = 0;
     zaehlerVersuche = 0;
+    ui->listWidget->setAlternatingRowColors(true);
+
 }
+
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
 
+
 void MainWindow::on_pushButtonRaten_clicked()
 {
     zaehlerVersuche = 0;
     aktuellesMinimum = ui->spinBox->value();
     aktuellesMaximum = ui->spinBox_2->value();
+    ui->spinBox->setEnabled(false);
+    ui->spinBox_2->setEnabled(false);
 
     berechneSchaetzung();
 
     ui->pushButtonHoeher->setEnabled(true);
     ui->pushButtonTiefer->setEnabled(true);
+    ui->pushButtonKopieren->setEnabled(true);
+
+    ui->listWidget->addItem("x = " + QString::number(aktuelleZahl));
+    ui->pushButtonRaten->setEnabled(false);
+
 }
+
 
 void MainWindow::berechneSchaetzung(){
     aktuelleZahl = ((aktuellesMinimum + aktuellesMaximum) / 2);
@@ -32,17 +45,28 @@ void MainWindow::berechneSchaetzung(){
     statusAktualisieren();
 }
 
+
 void MainWindow::on_pushButtonTiefer_clicked()
 {
+    int temp = aktuelleZahl;
+
     aktuellesMaximum = aktuelleZahl - 1;
     berechneSchaetzung();
+
+    ui->listWidget->addItem(QString("x < " + QString::number(temp) + " = " + QString::number(aktuelleZahl)));
 }
+
 
 void MainWindow::on_pushButtonHoeher_clicked()
 {
+    int temp = aktuelleZahl;
+
     aktuellesMinimum = aktuelleZahl + 1;
     berechneSchaetzung();
+
+    ui->listWidget->addItem(QString("x > " + QString::number(temp) + " = " + QString::number(aktuelleZahl)));
 }
+
 
 void MainWindow::statusAktualisieren(){
     zaehlerVersuche++;
@@ -50,8 +74,30 @@ void MainWindow::statusAktualisieren(){
     ui->statusBar->showMessage(statusZeile,0);
 }
 
-// Programmierung: Alsweider (2024)
+
+void MainWindow::on_pushButtonKopieren_clicked()
+{
+    QClipboard *clipboard = QGuiApplication::clipboard();
+    clipboard->setText(QString::number(aktuelleZahl));
+}
+
+
+void MainWindow::on_pushButtonZuruecksetzen_clicked()
+{
+    //aktuelleZahl = 0;
+    zaehlerVersuche = 0;
+    ui->spinBox->setValue(0);
+    ui->spinBox->setEnabled(true);
+    ui->spinBox_2->setValue(100);
+    ui->spinBox_2->setEnabled(true);
+    ui->listWidget->clear();
+    ui->pushButtonRaten->setEnabled(true);
+    ui->pushButtonKopieren->setEnabled(false);
+    ui->pushButtonHoeher->setEnabled(false);
+    ui->pushButtonTiefer->setEnabled(false);
+    ui->labelZahl->setText("Zahl");
+    ui->statusBar->clearMessage();
+}
+
+// Programmierung: Alsweider (2024-2025)
 // https://github.com/Alsweider
-
-
-
