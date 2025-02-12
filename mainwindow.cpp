@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     aktuelleZahl = 0;
     zaehlerVersuche = 0;
+    zeilenNummer = 0;
     ui->listWidget->setAlternatingRowColors(true);
 
 }
@@ -33,7 +34,7 @@ void MainWindow::on_pushButtonRaten_clicked()
     ui->pushButtonTiefer->setEnabled(true);
     ui->pushButtonKopieren->setEnabled(true);
 
-    ui->listWidget->addItem("x = " + QString::number(aktuelleZahl));
+    ui->listWidget->insertItem(0, "x = " + QString::number(aktuelleZahl));
     ui->pushButtonRaten->setEnabled(false);
 
 }
@@ -53,7 +54,7 @@ void MainWindow::on_pushButtonTiefer_clicked()
     aktuellesMaximum = aktuelleZahl - 1;
     berechneSchaetzung();
 
-    ui->listWidget->addItem(QString("x < " + QString::number(temp) + " = " + QString::number(aktuelleZahl)));
+    ui->listWidget->insertItem(0, QString("x < " + QString::number(temp) + " = " + QString::number(aktuelleZahl)));
 }
 
 
@@ -64,7 +65,7 @@ void MainWindow::on_pushButtonHoeher_clicked()
     aktuellesMinimum = aktuelleZahl + 1;
     berechneSchaetzung();
 
-    ui->listWidget->addItem(QString("x > " + QString::number(temp) + " = " + QString::number(aktuelleZahl)));
+    ui->listWidget->insertItem(0, QString("x > " + QString::number(temp) + " = " + QString::number(aktuelleZahl)));
 }
 
 
@@ -97,6 +98,7 @@ void MainWindow::on_pushButtonZuruecksetzen_clicked()
     ui->pushButtonTiefer->setEnabled(false);
     ui->labelZahl->setText("Zahl");
     ui->statusBar->clearMessage();
+    zeilenNummer = 0;
 }
 
 // Programmierung: Alsweider (2024-2025)
