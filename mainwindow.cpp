@@ -8,9 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     aktuelleZahl = 0;
     zaehlerVersuche = 0;
-    zeilenNummer = 0;
     ui->listWidget->setAlternatingRowColors(true);
-
 }
 
 
@@ -37,6 +35,10 @@ void MainWindow::on_pushButtonRaten_clicked()
     ui->listWidget->insertItem(0, "x = " + QString::number(aktuelleZahl));
     ui->pushButtonRaten->setEnabled(false);
 
+    if (ui->checkBoxAutoCopy->isChecked()){
+        on_pushButtonKopieren_clicked();
+    }
+
 }
 
 
@@ -55,6 +57,10 @@ void MainWindow::on_pushButtonTiefer_clicked()
     berechneSchaetzung();
 
     ui->listWidget->insertItem(0, QString("x < " + QString::number(temp) + " = " + QString::number(aktuelleZahl)));
+
+    if (ui->checkBoxAutoCopy->isChecked()){
+        on_pushButtonKopieren_clicked();
+    }
 }
 
 
@@ -66,6 +72,10 @@ void MainWindow::on_pushButtonHoeher_clicked()
     berechneSchaetzung();
 
     ui->listWidget->insertItem(0, QString("x > " + QString::number(temp) + " = " + QString::number(aktuelleZahl)));
+
+    if (ui->checkBoxAutoCopy->isChecked()){
+        on_pushButtonKopieren_clicked();
+    }
 }
 
 
@@ -98,7 +108,6 @@ void MainWindow::on_pushButtonZuruecksetzen_clicked()
     ui->pushButtonTiefer->setEnabled(false);
     ui->labelZahl->setText("Zahl");
     ui->statusBar->clearMessage();
-    zeilenNummer = 0;
 }
 
 // Programmierung: Alsweider (2024-2025)

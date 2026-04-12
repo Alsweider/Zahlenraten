@@ -35,7 +35,6 @@ private:
     int aktuellesMaximum;
     int aktuelleZahl;
     int zaehlerVersuche;
-    int zeilenNummer;
     void berechneSchaetzung();
     void statusAktualisieren();
 };
