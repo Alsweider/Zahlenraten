@@ -3,4 +3,4 @@ Dieses Programm errät mit möglichst wenigen Versuchen eine Zahl, die sich zwis
 
 [Neueste Version herunterladen](https://github.com/Alsweider/Zahlenraten/releases/latest)
 
-![2025-02-12 04_33_30-Zahlenraten](https://github.com/user-attachments/assets/cacf5cb1-6bcf-496a-a5ef-c2585ad28e76)
+![2026-04-12 06_11_30-Zahlenraten](https://github.com/user-attachments/assets/18064cb0-7118-4428-b702-311b252010a4)
