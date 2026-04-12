@@ -43,38 +43,60 @@ void MainWindow::on_pushButtonRaten_clicked()
 
 
 void MainWindow::berechneSchaetzung(){
+    int temp = aktuelleZahl;
+
     aktuelleZahl = ((aktuellesMinimum + aktuellesMaximum) / 2);
-    ui->labelZahl->setText(QString::number(aktuelleZahl));
-    statusAktualisieren();
+
+    if (aktuelleZahl != temp){ // nur wenn ein neues Ergebnis kommt
+        ui->labelZahl->setText(QString::number(aktuelleZahl));
+        statusAktualisieren();
+    }
 }
 
 
 void MainWindow::on_pushButtonTiefer_clicked()
 {
-    int temp = aktuelleZahl;
+    if (aktuelleZahl <= aktuellesMinimum) {
+        ui->pushButtonTiefer->setEnabled(false);
+        return;
+    }
 
+    int temp = aktuelleZahl;
     aktuellesMaximum = aktuelleZahl - 1;
     berechneSchaetzung();
 
+    if (aktuelleZahl != temp){ // nur wenn ein neues Ergebnis kommt
     ui->listWidget->insertItem(0, QString("x < " + QString::number(temp) + " = " + QString::number(aktuelleZahl)));
 
     if (ui->checkBoxAutoCopy->isChecked()){
         on_pushButtonKopieren_clicked();
+    }
+    } else {
+        ui->pushButtonTiefer->setEnabled(false);
+        ui->pushButtonHoeher->setEnabled(false);
     }
 }
 
 
 void MainWindow::on_pushButtonHoeher_clicked()
 {
-    int temp = aktuelleZahl;
+    if (aktuelleZahl >= aktuellesMaximum) {
+        ui->pushButtonHoeher->setEnabled(false);
+        return;
+    }
 
+    int temp = aktuelleZahl;
     aktuellesMinimum = aktuelleZahl + 1;
     berechneSchaetzung();
 
+    if (aktuelleZahl != temp){ // nur wenn ein neues Ergebnis kommt
     ui->listWidget->insertItem(0, QString("x > " + QString::number(temp) + " = " + QString::number(aktuelleZahl)));
-
     if (ui->checkBoxAutoCopy->isChecked()){
         on_pushButtonKopieren_clicked();
+    }
+    } else {
+        ui->pushButtonTiefer->setEnabled(false);
+        ui->pushButtonHoeher->setEnabled(false);
     }
 }
 
@@ -95,9 +117,9 @@ void MainWindow::on_pushButtonKopieren_clicked()
 
 void MainWindow::on_pushButtonZuruecksetzen_clicked()
 {
-    //aktuelleZahl = 0;
+    aktuelleZahl = 0;
     zaehlerVersuche = 0;
-    ui->spinBox->setValue(0);
+    ui->spinBox->setValue(1);
     ui->spinBox->setEnabled(true);
     ui->spinBox_2->setValue(100);
     ui->spinBox_2->setEnabled(true);
@@ -110,5 +132,5 @@ void MainWindow::on_pushButtonZuruecksetzen_clicked()
     ui->statusBar->clearMessage();
 }
 
-// Programmierung: Alsweider (2024-2025)
+// Programmierung: Alsweider (2024-2026)
 // https://github.com/Alsweider
